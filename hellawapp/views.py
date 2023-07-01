@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def hellaw_main(request):
+    return render(request,'hellawapp/mainPage.html',{})
