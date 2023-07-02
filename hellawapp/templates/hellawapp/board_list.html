@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>게시판 목록</title>
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+
+    />
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="container">
+        <h1>게시판 목록 조회</h1>
+        <p>
+            <a href="{% url 'board_post' %}"><i class="bi-plus"></i>게시글 추가</a>
+
+        </p>
+        <ul class="list-group">
+            {% for board in boards %}
+            <li class="list-group-item">
+               <a href="{% url 'board_detail' pk=board.pk %}">{{ board.title }}</a>
+
+
+                <div style="float:right">
+
+                    <a href="{% url 'board_edit' pk=board.pk %}" class="btn btn-outline-primary">수정하기</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        </div>
+    </body>
+
+</html>
