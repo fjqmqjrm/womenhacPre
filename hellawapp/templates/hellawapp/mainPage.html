@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom,  #FFCB44 55%, #ffffff 45%);
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      color: rgb(255, 255, 255);
+      text-align: center;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      width: 1000px;
+      margin: 0 auto;
+      margin-bottom: 40px;
+      transform: translateY(175px);
+      border-radius: 10px;
+    }
+
+    span {
+      font-weight: bold;
+      margin-top: 40px;
+    }
+
+    p {
+      font-weight: bold;
+      margin-top: 40px;
+    }
+
+    .highlight-red {
+      color: #FF4848;
+    }
+
+    .highlight-orange {
+      color: #FF8A36;
+    }
+
+    .highlight-gray {
+      color: #323232;
+    }
+
+    /* .box {
+
+    } */
+
+    .button-text {
+    font-weight: bold;
+    color: #323232;
+    text-decoration-line : none; 
+    text-align: left;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 15px;
+
+    background-color: #f2f2f2;
+    width: calc(25% - 12.5px);
+    height: 100px;
+    margin: 0 12.5px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    }
+
+    .button-icon {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .request-button {
+    background-color: #FFECBB;
+    color: #323232;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 40px;
+    margin-top: 40px;
+    border: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+  </style>
+  </head>
+  <body>
+  <div style="position: absolute; top: 28%; left: 50%; transform: translate(-50%, -50%);">
+    <p>우리에게 친숙하게 다가올 HelLaw</p>
+    <span class="highlight-gray">AI <span class="highlight-red">법률 계산기</span><span class="highlight-gray"> +
+    <span class="highlight-orange">시뮬레이션 <span class="highlight-gray">퀴즈로 빠르게</span>
+    <br><button class="request-button">HelLaw에서 사건 의뢰하기</button>
+  </div>
+{% load static %}
+  <div class="container">
+    <b class="highlight-gray">많이 찾는 분야</b>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <button class="button-text">
+          성범죄 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <img src="{% static 'hellawapp/image/성범죄.png' %}" alt="성범죄" class="button-icon">
+        </button>
+      </a>
+        <button class="button-text">
+          사기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <img src="{% static 'hellawapp/image/사기.png' %}" alt="사기" class="button-icon">
+        </button>
+      </a>
+      
+        <button class="button-text">
+          폭행/상해&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <img src="{% static 'hellawapp/image/폭행상해.png' %}" alt="폭행상해" class="button-icon">
+        </button>
+      </a>
+      
+        <button class="button-text">
+          음주운전&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <img src="{% static 'hellawapp/image/음주운전.png' %}" alt="음주운전" class="button-icon">
+        </button>
+      </a>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+     
+        <button class="button-text">
+          교통사고&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <img src="{% static 'hellawapp/image/교통사고.png' %}" alt="교통사고" class="button-icon">
+        </button>
+      </a>
+    
+        <button class="button-text">
+          대여금(채권자)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <img src="{% static 'hellawapp/image/대여금(채권자).png' %}" alt="대여금(채권자)" class="button-icon">
+        </button>
+      </a>
+     
+        <button class="button-text">
+          상간자 소송&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <img src="{% static 'hellawapp/image/상간자 소송.png' %}" alt="상간자 소송" class="button-icon">
+        </button>
+      </a>
+     
+        <button class="button-text">
+          이혼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <img src="{% static 'hellawapp/image/이혼.png' %}" class="button-icon">
+        </button>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
