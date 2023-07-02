@@ -5,7 +5,7 @@ from hellawapp.models import Board
 
 
 def hellaw_main(request):
-    return render(request,'hellawapp/mainPage.html',{})
+    return render(request,'hellawgapp/mainPage.html',{})
 
 def board_postList(request): # 전체 게시글 조회
     boards = Board.objects.all()
