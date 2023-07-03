@@ -8,3 +8,6 @@ class Board(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Blog(models.Model):
+    text = models.TextField()

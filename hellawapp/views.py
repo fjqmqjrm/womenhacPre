@@ -38,3 +38,5 @@ def board_edit(request, pk):
         form = BoardForm(instance=board)
     return render(request, 'hellawapp/board_post.html', {'form': form})
 
+def login(request):
+    return render(request, 'hellawapp/login.html', {})
