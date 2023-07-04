@@ -95,8 +95,10 @@
             <input type="text" placeholder="어떤 문제를 겪고 계시나요?"
             style="width: 100%; border: 1px solid #FFCB44; border-radius: 10px; padding: 10px 12px; font-size: 14px; ">
         </div>
-        <button style="position: relative; top: 40px; left:700px; font-weight: bold; height: 30px;">회원가입/로그인</button>
-        <button style="position: relative; top: 40px; left:750px; font-weight: bold; height: 30px;">메뉴</button>
+         <a href="{% url 'login' %}">
+             <button style="position: relative; top: 40px; left:700px; font-weight: bold; height: 30px;">회원가입/로그인</button></a>
+        <a href="{% url 'hellaw_main' %}">
+            <button style="position: relative; top: 40px; left:750px; font-weight: bold; height: 30px;">메인페이지</button></a>
     </div>
 	  <div style="display: flex; flex-direction: column; margin-top: 150px; align-items: center;">
 
@@ -117,7 +119,7 @@
         </ul>
         </div>
 <div style="height: 30px; margin-bottom: 60px;">
-            <button class="request-button">커뮤니티가기</button>
+
             <button class="request-button"><a href="{% url 'board_post' %}">글쓰러가기</a></button>
         </div>
 

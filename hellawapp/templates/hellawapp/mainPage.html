@@ -116,17 +116,19 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-      <button style="position: relative; top: 40px; right:30px; font-weight: bold; height: 30px;">회원가입/로그인</button>
+      <a href="{% url 'login' %}"><button style="position: relative; top: 40px; right:30px; font-weight: bold; height: 30px;">회원가입/로그인</button></a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <button style="position: relative; top: 40px; right:10px; font-weight: bold; height: 30px;">메뉴</button>
+      <a href="{% url 'board_postList' %}">
+        <button style="position: relative; top: 40px; right:10px; font-weight: bold; height: 30px;">게시판</button></a>
     </div>
 
 
   <div style="position: absolute; top: 28%; left: 50%; transform: translate(-50%, -50%);">
     <p>우리에게 친숙하게 다가올 HelLaw</p>
-    <span class="highlight-gray">AI <span class="highlight-red">법률 계산기</span><span class="highlight-gray"> +
-    <span class="highlight-orange">시뮬레이션 <span class="highlight-gray">퀴즈로 빠르게</span>
-    <br><button class="request-button">HelLaw에서 사건 의뢰하기</button>
+    <span class="highlight-gray">사용자 <span class="highlight-red">Community</span><span class="highlight-gray"> +
+    <span class="highlight-orange">사건 <span class="highlight-gray">교육자료로 보다쉽게</span>
+      <a href="https://www.moleg.go.kr/board.es?mid=a10201080000&bid=0004&tabNo=0">
+        <br><button class="request-button">법제처 공표정보 보러가기</button></a>
   </div>
   {% load static %}
   <div class="container">

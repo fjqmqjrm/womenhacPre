@@ -8,4 +8,10 @@ urlpatterns = [
     path('board/<int:pk>/edit/',views.board_edit, name='board_edit'),
     path('board/<int:pk>/delete/', views.board_delete, name='board_delete'),
     path('search',views.search, name = 'search'),
+    #로그인
+    path('login/',views.login,name='login'),
+    path('board/post/login/',views.login,name='login'),
+    path('board/<int:pk>/edit/login/',views.login_update,name='login_update')
+
+
 ]

@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 
 from hellawapp.forms import BoardForm
 from hellawapp.models import Board
+#로그인
+from django.contrib.auth.decorators import login_required
 
 
 def hellaw_main(request):
@@ -14,7 +16,7 @@ def board_postList(request): # 전체 게시글 조회
 def board_detail(request, pk):
     board = Board.objects.get(id=pk)
     return render(request, 'hellawapp/board_detail.html',{'board': board})
-
+@login_required
 def board_post(request): # 게시글 작성
     if request.method == "POST": #post메서드
         form = BoardForm(request.POST)
@@ -25,7 +27,7 @@ def board_post(request): # 게시글 작성
     else:
         form = BoardForm()
     return render(request,'hellawapp/board_post.html', {'form':form})
-
+@login_required
 def board_edit(request, pk):
     board = Board.objects.get(id=pk)
     if request.method == "POST":
@@ -37,6 +39,7 @@ def board_edit(request, pk):
     else:
         form = BoardForm(instance=board)
     return render(request, 'hellawapp/board_post.html', {'form': form})
+@login_required
 def board_delete(request, pk): #글 작성자를 확인하여 지우는거 구현해야 함
     board = Board.object.get(id=pk)
     board.delete()
@@ -55,3 +58,9 @@ def search(request):
 
     else:
         return render(request, 'hellawapp/search.html')
+
+def login(request):
+    return render(request, 'hellawapp/login.html', {})
+
+def login_update(request,pk):
+    return render(request, 'hellawapp/login.html', {})
