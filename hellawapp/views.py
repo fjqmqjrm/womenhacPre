@@ -5,11 +5,11 @@ from hellawapp.models import Board
 
 
 def hellaw_main(request):
-    return render(request,'hellawgapp/mainPage.html',{})
+    return render(request,'hellawapp/mainPage.html',{})
 
 def board_postList(request): # 전체 게시글 조회
     boards = Board.objects.all()
-    return render(request, 'hellawapp/board_list.html', {'boards': boards})
+    return render(request, 'hellawapp/board_list_test.html', {'boards': boards})
 
 def board_detail(request, pk):
     board = Board.objects.get(id=pk)
@@ -37,4 +37,21 @@ def board_edit(request, pk):
     else:
         form = BoardForm(instance=board)
     return render(request, 'hellawapp/board_post.html', {'form': form})
+def board_delete(request, pk): #글 작성자를 확인하여 지우는거 구현해야 함
+    board = Board.object.get(id=pk)
+    board.delete()
+    return redirect('board_postList')
 
+
+
+def search(request):
+    boards = Board.objects.all().order_by('-id')
+
+    q = request.POST.get('q', "")
+
+    if q:
+        boards = boards.filter(title__icontains=q)
+        return render(request, 'hellawapp/search.html', {'boards': boards, 'q': q})
+
+    else:
+        return render(request, 'hellawapp/search.html')
