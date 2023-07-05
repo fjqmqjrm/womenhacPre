@@ -9,7 +9,9 @@
       padding: 0;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(to bottom, #FFCB44 55%, #ffffff 45%);
+      background: linear-gradient(#FFCB44 55%, #ffffff 45%);
+      background-attachment: fixed;
+      background-repeat: no-repeat;
       font-family: Arial, sans-serif;
       font-size: 24px;
       color: rgb(33, 33, 33);
@@ -17,7 +19,10 @@
 
     .container3 {
       background-color: #fbfbfb;
-      padding: 20px;
+      padding-top: 50px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 60px;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
       width: 800px;
       margin-bottom: 40px;
@@ -65,8 +70,6 @@
       color: #545454;
       font-size: medium;
       padding-left: 20px;
-
-
     }
 
     .request-button {
@@ -80,57 +83,82 @@
     border: none;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     position: relative;
+    }
 
-}
+    .board_name {
+    color: #626262;
+    text-decoration-line: none;
+    }
+
+    .btn-outline-primary{
+    text-decoration-line: none;
+    color: #AFAFAF;
+    margin-left: 20px;
+    }
+
+    .button_write{
+    text-decoration-line: none;
+    color: white;
+
+    }
+
   </style>
   </head>
 
  <body>
     {% load static %}
     <div style="display: flex; background-color: white; height: 100px;">
-        <p style="color: #FFCB44; margin-left: 40px; font-size: 1.5em;">HelLaw</p>
+        <a href="{% url 'hellaw_main' %}" style="text-decoration-line: none;">
+            <p style="color: #FFCB44; margin-left: 40px; font-size: 1.5em;">HelLaw</p></a>
         &nbsp&nbsp&nbsp&nbsp&nbsp
+
         <div style="position: relative; width: 300px; margin-top: 40px;">
-            <img src="{% static 'hellawapp/image/검색.png' %}" style="position: absolute; width: 17px; top: 10px; right: 12px; margin: 0;">
-            <input type="text" placeholder="어떤 문제를 겪고 계시나요?"
-            style="width: 100%; border: 1px solid #FFCB44; border-radius: 10px; padding: 10px 12px; font-size: 14px; ">
-        </div>
+            <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="post">
+                {% csrf_token %}
+                <div style="display:flex;">
+                <input class="form-control mr-sm-2" type="search" placeholder="어떤 문제를 겪고 계시나요?" aria-label="Search" name="q" value="{{q}}" style="width: 100%; border: 1px solid #FFCB44; border-radius: 10px; padding: 10px 12px; font-size: 14px;">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-left:10px; background-color:white; border:none;">
+                    <img src="{% static 'hellawapp/image/검색.png' %}">
+                </button>
+                </div>
+            </form>
+            </div>
          <a href="{% url 'login' %}">
-             <button style="position: relative; top: 40px; left:700px; font-weight: bold; height: 30px;">회원가입/로그인</button></a>
+             <button style="position: relative; top: 40px; left:700px; height: 30px; font-size: 15px; font-weight: 900; height: 30px; border: none; background-color: white;">로그인관리</button></a>
         <a href="{% url 'hellaw_main' %}">
-            <button style="position: relative; top: 40px; left:750px; font-weight: bold; height: 30px;">메인페이지</button></a>
-    </div>
-	  <div style="display: flex; flex-direction: column; margin-top: 150px; align-items: center;">
-
-        <div class="container3">
-
-
-
-
-            {% for board in boards %}
-
-                <p class="p2">
-               <a href="{% url 'board_detail' pk=board.pk %}"> &nbsp {{ board.title }} &nbsp&nbsp  <a href="{% url 'board_edit' pk=board.pk %}" class="btn btn-outline-primary"> 수정하기</a></a>
-
-                </p>
-
-
-            {% endfor %}
-        </ul>
-        </div>
-<div style="height: 30px; margin-bottom: 60px;">
-
-            <button class="request-button"><a href="{% url 'board_post' %}">글쓰러가기</a></button>
-        </div>
-
+            <button style="position: relative; top: 40px; left:750px; height: 30px; font-size: 15px; font-weight: 900; height: 30px; border: none; background-color: white;">메인페이지</button></a>
     </div>
 
 
-    <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="post">
-    {% csrf_token %}
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{q}}">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <div style="display: flex; justify-content: center; margin-top: 60px;">
+
+        <div>
+            <p>궁금한 점을 <span class="highlight-white">자유롭게</span> 나눠보세요!</p>
+
+            <div class="container3">
+                <div style="display: flex; font-size: medium; flex-direction: column;">
+
+                    {% for board in boards %}
+
+                    <p class="p2">
+                        <a href="{% url 'board_detail' pk=board.pk %}" class="board_name"> &nbsp {{ board.title }} &nbsp&nbsp  <a href="{% url 'board_edit' pk=board.pk %}" class="btn btn-outline-primary"> 수정하기</a></a>
+                    </p>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div style="height: 30px; margin-bottom: 60px; margin-left:700px;">
+            <button class="request-button"><a href="{% url 'board_post' %}" class="button_write">글쓰러가기</a></button>
+        </div>
+
+
 
 
 

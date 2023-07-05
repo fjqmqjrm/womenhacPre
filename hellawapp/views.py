@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django import render, redirect
 
 from hellawapp.forms import BoardForm
 from hellawapp.models import Board
 #로그인
-from django.contrib.auth.decorators import login_required
+from django.contrib import login_required
 
 
 def hellaw_main(request):
@@ -64,3 +64,4 @@ def login(request):
 
 def login_update(request,pk):
     return render(request, 'hellawapp/login.html', {})
+
