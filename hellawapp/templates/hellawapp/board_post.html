@@ -9,29 +9,25 @@
       padding: 0;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(to bottom,  #FFCB44 55%, #ffffff 45%);
+      background: linear-gradient(#FFCB44 55%, #ffffff 45%);
+      background-attachment: fixed;
+      background-repeat: no-repeat;
       font-family: Arial, sans-serif;
       font-size: 24px;
       color: rgb(33, 33, 33);
     }
 
 
-    .container4 {
+    .container {
       background-color: #fbfbfb;
       padding: 20px;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
       width: 800px;
+      height: 500px;
       margin-bottom: 40px;
       border-radius: 10px;
     }
 
-    .container5 {
-        background-color: #ffffff;
-        padding: 20px;
-        width: 700px;
-        height: 300px;
-        margin: 30px;
-    }
 
     span {
       font-weight: bold;
@@ -71,7 +67,7 @@
 
     .p2 {
       color: #545454;
-      font-size: medium;
+      font-size: 20px;
       padding-left: 20px;
 
 
@@ -84,30 +80,39 @@
     font-size: 20px;
     padding: 10px 20px;
     border-radius: 40px;
-    margin-right: 10px;
     border: none;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     position: relative;
-    left: 90px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+    }
+
+
 
   </style>
   </head>
   <body>
 {% load static %}
     <div style="display: flex; background-color: white; height: 100px;">
-        <p style="color: #FFCB44; margin-left: 40px; font-size: 1.5em;">HelLaw</p>
+        <a href="{% url 'hellaw_main' %}" style="text-decoration-line: none;">
+            <p style="color: #FFCB44; margin-left: 40px; font-size: 1.5em;">HelLaw</p></a>
         &nbsp&nbsp&nbsp&nbsp&nbsp
+
         <div style="position: relative; width: 300px; margin-top: 40px;">
-            <img src="{% static 'hellawapp/image/검색.png' %}" style="position: absolute; width: 17px; top: 10px; right: 12px; margin: 0;">
-            <input type="text" placeholder="어떤 문제를 겪고 계시나요?"
-            style="width: 100%; border: 1px solid #FFCB44; border-radius: 10px; padding: 10px 12px; font-size: 14px; ">
+            <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="post">
+                {% csrf_token %}
+                <div style="display:flex;">
+                    <input class="form-control mr-sm-2" type="search" placeholder="어떤 문제를 겪고 계시나요?" aria-label="Search" name="q" value="{{q}}" style="width: 100%; border: 1px solid #FFCB44; border-radius: 10px; padding: 10px 12px; font-size: 14px;">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-left:10px; background-color:white; border:none;">
+                        <img src="{% static 'hellawapp/image/검색.png' %}">
+                    </button>
+                </div>
+            </form>
         </div>
+
          <a href="{% url 'login' %}">
-             <button style="position: relative; top: 40px; left:700px; font-weight: bold; height: 30px;">회원가입/로그인</button></a>
-        <button style="position: relative; top: 40px; left:750px; font-weight: bold; height: 30px;">메뉴</button>
+             <button style="position: relative; top: 40px; left:700px; height: 30px; font-size: 15px; font-weight: 900; height: 30px; border: none; background-color: white;">로그인관리</button></a>
+
+        <a href="{% url 'board_postList' %}">
+            <button style="position: relative; top: 40px; left:750px; height: 30px; font-size: 15px; font-weight: 900; height: 30px; border: none; background-color: white;">게시판</button></a>
     </div>
 
     <div style="display: flex; justify-content: center; margin-top: 60px;">
@@ -115,17 +120,16 @@
         <div>
             <p>궁금한 점을 <span class="highlight-white">자유롭게</span> 나눠보세요!</p>
 
-            <div class="container4">
+            <div class="container">
                 <div style="display: flex; font-size: medium;">
 
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <div style="margin-bottom: 30px;">
-                            <a href="{% url 'board_postList' %}">
-                                    <button type="submit" class="request-button" style="margin-left: 600px;">이전</button></a>
-                            <form method="POST">
+                            <div style="margin-bottom: 20px;">
+                            <a href="{% url 'board_postList' %}"></a>
+                            <form class="form" method="POST">
                             {% csrf_token %}
                             {% for field in form %}
                             <p class="p2">
@@ -133,7 +137,10 @@
                             </p>
                         {% endfor %}
 
-                        <button type="submit" class="request-button" style="margin-left: 600px;">등록</button>
+                        <div style="display:flex; justify-content:flex-end">
+                            <button type="submit" class="request-button">등록</button>
+                        </div>
+
                     </form>
 
 

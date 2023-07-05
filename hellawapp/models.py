@@ -1,4 +1,4 @@
-from django.db import models
+from django import models
 
 
 class Board(models.Model):

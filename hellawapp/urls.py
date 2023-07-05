@@ -11,7 +11,6 @@ urlpatterns = [
     #로그인
     path('login/',views.login,name='login'),
     path('board/post/login/',views.login,name='login'),
-    path('board/<int:pk>/edit/login/',views.login_update,name='login_update')
-
+    path('board/<int:pk>/edit/login/',views.login_update,name='login_update'),
 
 ]

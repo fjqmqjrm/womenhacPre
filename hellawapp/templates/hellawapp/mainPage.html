@@ -96,6 +96,7 @@
     margin-top: 40px;
     border: none;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+
 }
   </style>
   </head>
@@ -106,27 +107,40 @@
   {% load static %}
     <div style="position: absolute; top: 2px; left: 150px; transform: translate(-10%, -10%); display: flex; background-color: white; height: 100px; width: 100.5vw;">
       <p style="color: #FFCB44; margin-left: 40px; font-size: 1.5em;">HelLaw</p>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <div style="position: relative; width: 300px; margin-top: 40px; left: -100px; ">
-          <img src="{% static 'hellawapp/image/검색.png' %}" style="position: absolute; width: 17px; top: 10px; right: 1px; margin: 0;">
-          <input type="text" placeholder="어떤 문제를 겪고 계시나요?" style="width: 100%; border: 1px solid #FFCB44; border-radius: 10px; padding: 10px 12px; font-size: 14px; ">
-      </div>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+       <div style="position: relative; width: 300px; margin-top: 40px;">
+            <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="post">
+                {% csrf_token %}
+                <div style="display:flex;">
+                <input class="form-control mr-sm-2" type="search" placeholder="어떤 문제를 겪고 계시나요?" aria-label="Search" name="q" value="{{q}}" style="width: 100%; border: 1px solid #FFCB44; border-radius: 10px; padding: 10px 12px; font-size: 14px;">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-left:10px; background-color:white; border:none;">
+                    <img src="{% static 'hellawapp/image/검색.png' %}">
+                </button>
+                </div>
+            </form>
+       </div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-      <a href="{% url 'login' %}"><button style="position: relative; top: 40px; right:30px; font-weight: bold; height: 30px;">회원가입/로그인</button></a>
+      {% if user.is_authenticated %}
+      <a href="/accounts/logout" style="font-size:15px; margin-top: 46px; position:relative; right:30px; text-decoration-line: none; color: black; font-weight:bold;"><span style="color: #FFCB44">{{user.username}}</span> 님이 로그인 중</a><br />
+      {% else %}
+      <a href="{% url 'login' %}"><button style="position: relative; top: 40px; right:30px; height: 30px; font-size: 15px; font-weight: 900; height: 30px; border: none; background-color: white;">로그인 관리</button></a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {% endif %}
+
       <a href="{% url 'board_postList' %}">
-        <button style="position: relative; top: 40px; right:10px; font-weight: bold; height: 30px;">게시판</button></a>
+        <button style="position: relative; top: 40px; right:10px; height: 30px; font-size: 15px; font-weight: 900; height: 30px; border: none; background-color: white;">게시판</button></a>
     </div>
 
 
   <div style="position: absolute; top: 28%; left: 50%; transform: translate(-50%, -50%);">
     <p>우리에게 친숙하게 다가올 HelLaw</p>
     <span class="highlight-gray">사용자 <span class="highlight-red">Community</span><span class="highlight-gray"> +
-    <span class="highlight-orange">사건 <span class="highlight-gray">교육자료로 보다쉽게</span>
+    <span class="highlight-orange">사건 <span class="highlight-gray">교육자료로 보다 쉽게</span>
       <a href="https://www.moleg.go.kr/board.es?mid=a10201080000&bid=0004&tabNo=0">
         <br><button class="request-button">법제처 공표정보 보러가기</button></a>
   </div>
